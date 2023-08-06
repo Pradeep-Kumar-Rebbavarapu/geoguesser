@@ -18,7 +18,7 @@ function isAuthenticated(req, res, next) {
 }
 const timer = new Timer({
   label: 'test-timer',
-  startTimestamp: Date.now() // 2019-07-14 03:13:21.233Z
+  startTimestamp: new Date(2023, 7, 6,23,59,0) // 2019-07-14 03:13:21.233Z
 });
 const port = process.env.PORT || 3000;
 
@@ -84,7 +84,7 @@ app.use(authRoutes);
 
 
 app.get("/", (req, res) => {
- 
+ console.log(timer.time())
   res.render("login", {
     user: req.user,
     time:timer.time()
