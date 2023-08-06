@@ -32,7 +32,17 @@
         <% } else { %>
         <div class=" rows relative">
           <div style="margin-left: 1rem;"><%= index + 1 %></div>
-          <div style="font-weight: 600;"><%= usr.name %> (<%= usr.email.slice(-20).slice(-18) %>)</div>
+          <div style="font-weight: 600;"><%= usr.name %> 
+            <% if(24 - usr.email.slice(-20).slice(0,2)===1) { %>
+              (1st Year)
+            <% } else if(24 - usr.email.slice(-20).slice(0,2)===2) { %>
+              (2nd Year)
+            <% } else if(24 - usr.email.slice(-20).slice(0,2)===3) { %>
+              (3rd Year)
+            <% } else if(24 - usr.email.slice(-20).slice(0,2)===4) { %>
+              (4th Year)
+            <% } %>
+          </div>
           <div class="absolute top-[-10px] left-[-10px] bg-red-500 rounded-full px-2 py-1 text-xs text-white " style="margin-right: 1rem;"><%= usr.level %></div>
           <div  style="margin-right: 1rem;"><%= usr.score %></div>
         </div>
