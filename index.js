@@ -99,15 +99,11 @@ app.get('/aboutus', (req, res) => {
 })
 
 app.get('/LoginPage', (req, res) => {
-  if (!isJobRunning) {
     res.render('LoginPage', {
       user: req.user,
       time:timer.time()
     })
-  }
-  else {
-    res.redirect('/leaderboard')
-  }
+  
 }
 )
 
@@ -133,13 +129,7 @@ app.get("/dashboard", isAuthenticated, async (req, res) => {
       var img_url = image.path;
       var lat = image.long;
       var long = image.lat;
-      res.render("dashboard", {
-        user: { email },
-        img_url: img_url,
-        lat: lat,
-        long: long,
-        time:timer.time()
-      });
+      res.render("leaderboard", { leaderboard, user:req.user,time:timer.time() });
 
     }
   }
@@ -179,7 +169,7 @@ app.post("/update-score", isAuthenticated, async (req, res) => {
       if (!user) {
         return res.status(404).json({ error: "User not found" });
       }
-      res.redirect('/dashboard')
+      res.render("leaderboard", { leaderboard, user:req.user,time:timer.time() });
     } catch (error) {
 
     }
