@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const passport = require('passport');
 const schedule = require('node-schedule');
-let isJobRunning = false;
+let isJobRunning = true;
 const app = express();
 const Image = require("./models/Image");
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
