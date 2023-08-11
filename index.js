@@ -124,9 +124,10 @@ app.get("/dashboard", isAuthenticated, async (req, res) => {
     //get the length of data in the table Image
     const length = await Image.countDocuments();
 
-
-    if (user.level === length + 1) {
-      res.render("leaderboard", { leaderboard, user: req.user });
+    console.log("length",length)
+    console.log("user level",user.level)
+    if (user.level > length) {
+      res.render("leaderboard", { leaderboard, user:req.user,time:timer.time() });
     }
     else {
       var img_url = image.path;
